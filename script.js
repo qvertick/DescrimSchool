@@ -23,8 +23,6 @@ const COURSES=[
   inc:{ru:['Все курсы выше','Постоянная связь со мной','Помогу выйти на 1 клиента'],en:['All the courses above','Direct contact with me',"I'll help you land your first client"]},learn:null}];
 
 const PORTFOLIO=[ // замените на свои работы: href — ссылка на видео
- {k:'motion',t:{ru:'Анимация логотипа',en:'Logo animation'},d:{ru:'Короткий лого-ролик в After Effects.',en:'A short logo sting in After Effects.'},c:['#7b6cf0','#3a4bb0']},
- {k:'motion',t:{ru:'Кинетическая типографика',en:'Kinetic typography'},d:{ru:'Текстовая анимация под музыку.',en:'Text animation set to music.'},c:['#a07bd8','#4a3a9a']},
  {k:'3d',t:{ru:'3D-продукт',en:'3D product'},d:{ru:'Модель в Blender, финал в After Effects.',en:'Modeled in Blender, finished in After Effects.'},c:['#5f7fe0','#6d4fb8']},
  {k:'3d',t:{ru:'Персонаж с ригом',en:'Rigged character'},d:{ru:'Риггинг и анимация персонажа.',en:'Rigging and character animation.'},c:['#8a70e8','#2f5aa8']},
  {k:'edit',t:{ru:'Рекламный ролик',en:'Ad spot'},d:{ru:'Динамичный монтаж для бренда.',en:'Fast-paced editing for a brand.'},c:['#9a6fd0','#3b3f9c']},
