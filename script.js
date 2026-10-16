@@ -25,7 +25,7 @@ const COURSES=[
 const PORTFOLIO=[ // замените на свои работы: v — путь к видео (videos/name.mp4), p — обложка (videos/name.jpg), href — внешняя ссылка
  {k:'3d',t:{ru:'3D-продукт',en:'3D product'},d:{ru:'Модель в Blender, финал в After Effects.',en:'Modeled in Blender, finished in After Effects.'},c:['#5f7fe0','#6d4fb8']},
  {k:'3d',t:{ru:'Персонаж с ригом',en:'Rigged character'},d:{ru:'Риггинг и анимация персонажа.',en:'Rigging and character animation.'},c:['#8a70e8','#2f5aa8']},
- {k:'edit',t:{ru:'Рекламный ролик',en:'Ad spot'},d:{ru:'Динамичный монтаж для бренда.',en:'Fast-paced editing for a brand.'},c:['#9a6fd0','#3b3f9c'],v:'brayman.mp4'},
+ {k:'edit',t:{ru:'Рекламный ролик',en:'Ad spot'},d:{ru:'Динамичный монтаж для бренда.',en:'Fast-paced editing for a brand.'},c:['#9a6fd0','#3b3f9c']},
  {k:'motion',t:{ru:'YouTube-интро',en:'YouTube intro'},d:{ru:'Заставка для канала.',en:'A channel intro.'},c:['#6e7fe8','#8a56b8']},
  {k:'edit',t:{ru:'Сториз и Reels',en:'Stories and Reels'},d:{ru:'Серия коротких вертикальных видео.',en:'A series of short vertical videos.'},c:['#8b78f0','#4a5fb8']},
  {k:'3d',t:{ru:'Сцена в Blender',en:'Blender scene'},d:{ru:'Окружение и свет, рендер в AE.',en:'Environment and lighting, rendered in AE.'},c:['#7a66d8','#35509f']}];
@@ -200,15 +200,15 @@ function calc(instant){
 // portfolio
 const KINDS=['all','motion','3d','edit'];let kind='all';
 function renderFilters(){$('#filters').innerHTML=KINDS.map(k=>`<button class="chip" data-k="${k}" aria-pressed="${k===kind}">${T('f_'+k)}</button>`).join('')}
-function renderGrid(){$('#grid').innerHTML=PORTFOLIO.map((w,i)=>`<button class="glass work${kind!=='all'&&w.k!==kind?' hide':''}" data-i="${i}" data-k="${w.k}"><div class="thumb" style="--c1:${w.c[0]};--c2:${w.c[1]}${w.p?`;background:url('${w.p}') center/cover`:''}"><div class="play"><i>▶</i></div></div><div class="wi"><b>${L(w.t)}</b><span>${T('f_'+w.k)}</span></div></button>`).join('')}
+function renderGrid(){$('#grid').innerHTML=PORTFOLIO.map((w,i)=>`<button class="glass work${kind!=='all'&&w.k!==kind?' hide':''}" data-i="${i}" data-k="${w.k}"><div class="thumb${w.p?' ph':''}" style="--c1:${w.c[0]};--c2:${w.c[1]}${w.p?`;background:url('${w.p}') center/cover`:''}"><div class="play"><i>▶</i></div></div><div class="wi"><b>${L(w.t)}</b><span>${T('f_'+w.k)}</span></div></button>`).join('')}
 $('#filters').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;kind=b.dataset.k;$$('.chip').forEach(x=>x.setAttribute('aria-pressed',x===b));$$('.work').forEach(w=>w.classList.toggle('hide',kind!=='all'&&w.dataset.k!==kind))};
 $('#grid').onclick=e=>{const w=e.target.closest('.work');if(!w)return;const p=PORTFOLIO[+w.dataset.i];$('#mt').textContent=L(p.t);$('#md').textContent=L(p.d);
  const t=$('#mthumb');t.style.setProperty('--c1',p.c[0]);t.style.setProperty('--c2',p.c[1]);
  const l=$('#mlink');if(p.href){l.href=p.href;l.textContent=T('view')}else{l.href=TG;l.textContent=T('ask')}
- const ov=t.querySelector('video');if(ov)ov.remove();const pl=t.querySelector('.play');pl.style.display='';
+ const ov=t.querySelector('video');if(ov)ov.remove();t.classList.toggle('vid',!!p.v);const pl=t.querySelector('.play');pl.style.display='';
  if(p.v){pl.style.display='none';const v=document.createElement('video');v.src=p.v;if(p.p)v.poster=p.p;v.controls=true;v.playsInline=true;v.autoplay=true;v.preload='metadata';v.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;border-radius:inherit';t.style.position='relative';t.appendChild(v)}
  $('#modal').classList.add('on');$('#mclose').focus()};
-function closeM(){const v=$('#mthumb video');if(v){v.pause();v.remove()}const pl=$('#mthumb .play');if(pl)pl.style.display='';$('#modal').classList.remove('on')}
+function closeM(){const v=$('#mthumb video');if(v){v.pause();v.remove()}const pl=$('#mthumb .play');if(pl)pl.style.display='';$('#mthumb').classList.remove('vid');$('#modal').classList.remove('on')}
 $('#mclose').onclick=closeM;$('#modal').onclick=e=>{if(e.target.id==='modal')closeM()};addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
 
 // language + currency switches
