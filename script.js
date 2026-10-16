@@ -25,7 +25,7 @@ const COURSES=[
 const PORTFOLIO=[ // замените на свои работы: href — ссылка на видео
  {k:'3d',t:{ru:'3D-продукт',en:'3D product'},d:{ru:'Модель в Blender, финал в After Effects.',en:'Modeled in Blender, finished in After Effects.'},c:['#5f7fe0','#6d4fb8']},
  {k:'3d',t:{ru:'Персонаж с ригом',en:'Rigged character'},d:{ru:'Риггинг и анимация персонажа.',en:'Rigging and character animation.'},c:['#8a70e8','#2f5aa8']},
- {k:'edit',t:{ru:'Рекламный ролик',en:'Ad spot'},d:{ru:'Динамичный монтаж для бренда.',en:'Fast-paced editing for a brand.'},c:['#9a6fd0','#3b3f9c']},
+ {k:'edit',t:{ru:'Рекламный ролик',en:'Ad spot'},d:{ru:'Динамичный монтаж для бренда.',en:'Fast-paced editing for a brand.'},c:['#9a6fd0','#3b3f9c']},v:'videos/ad-brayman.mp4',p:'videos/ad-spot.jpg'},
  {k:'motion',t:{ru:'YouTube-интро',en:'YouTube intro'},d:{ru:'Заставка для канала.',en:'A channel intro.'},c:['#6e7fe8','#8a56b8']},
  {k:'edit',t:{ru:'Сториз и Reels',en:'Stories and Reels'},d:{ru:'Серия коротких вертикальных видео.',en:'A series of short vertical videos.'},c:['#8b78f0','#4a5fb8']},
  {k:'3d',t:{ru:'Сцена в Blender',en:'Blender scene'},d:{ru:'Окружение и свет, рендер в AE.',en:'Environment and lighting, rendered in AE.'},c:['#7a66d8','#35509f']}];
