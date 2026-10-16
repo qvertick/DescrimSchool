@@ -184,3 +184,7 @@ main.swap{opacity:0;transform:translateY(6px)}
 .tree .tt{top:0;animation:sway 5s steps(1,end) infinite}
 .tree .tb{bottom:0}
 @keyframes sway{0%{transform:none}25%{transform:translateX(3px)}50%{transform:none}75%{transform:translateX(-3px)}}
+
+/* видео и обложки в портфолио: убираем цветной градиент поверх */
+.thumb.vid::after,.thumb.ph::after{display:none}
+.thumb video{z-index:1}
