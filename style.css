@@ -188,3 +188,4 @@ main.swap{opacity:0;transform:translateY(6px)}
 /* видео и обложки в портфолио: убираем цветной градиент поверх */
 .thumb.vid::after,.thumb.ph::after{display:none}
 .thumb video{z-index:1}
+.thumb>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}

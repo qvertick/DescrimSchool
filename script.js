@@ -200,7 +200,7 @@ function calc(instant){
 // portfolio
 const KINDS=['all','motion','3d','edit'];let kind='all';
 function renderFilters(){$('#filters').innerHTML=KINDS.map(k=>`<button class="chip" data-k="${k}" aria-pressed="${k===kind}">${T('f_'+k)}</button>`).join('')}
-function renderGrid(){$('#grid').innerHTML=PORTFOLIO.map((w,i)=>`<button class="glass work${kind!=='all'&&w.k!==kind?' hide':''}" data-i="${i}" data-k="${w.k}"><div class="thumb${w.p?' ph':''}" style="--c1:${w.c[0]};--c2:${w.c[1]}${w.p?`;background:url('${w.p}') center/cover`:''}"><div class="play"><i>▶</i></div></div><div class="wi"><b>${L(w.t)}</b><span>${T('f_'+w.k)}</span></div></button>`).join('')}
+function renderGrid(){$('#grid').innerHTML=PORTFOLIO.map((w,i)=>`<button class="glass work${kind!=='all'&&w.k!==kind?' hide':''}" data-i="${i}" data-k="${w.k}"><div class="thumb${w.p||w.v?' ph':''}" style="--c1:${w.c[0]};--c2:${w.c[1]}${w.p?`;background:url('${w.p}') center/cover`:''}">${w.v?`<video src="${w.v}#t=0.5" muted loop playsinline preload="metadata"></video>`:''}<div class="play"><i>▶</i></div></div><div class="wi"><b>${L(w.t)}</b><span>${T('f_'+w.k)}</span></div></button>`).join('')}
 $('#filters').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;kind=b.dataset.k;$$('.chip').forEach(x=>x.setAttribute('aria-pressed',x===b));$$('.work').forEach(w=>w.classList.toggle('hide',kind!=='all'&&w.dataset.k!==kind))};
 $('#grid').onclick=e=>{const w=e.target.closest('.work');if(!w)return;const p=PORTFOLIO[+w.dataset.i];$('#mt').textContent=L(p.t);$('#md').textContent=L(p.d);
  const t=$('#mthumb');t.style.setProperty('--c1',p.c[0]);t.style.setProperty('--c2',p.c[1]);
@@ -208,6 +208,8 @@ $('#grid').onclick=e=>{const w=e.target.closest('.work');if(!w)return;const p=PO
  const ov=t.querySelector('video');if(ov)ov.remove();t.classList.toggle('vid',!!p.v);const pl=t.querySelector('.play');pl.style.display='';
  if(p.v){pl.style.display='none';const v=document.createElement('video');v.src=p.v;if(p.p)v.poster=p.p;v.controls=true;v.playsInline=true;v.autoplay=true;v.preload='metadata';v.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;border-radius:inherit';t.style.position='relative';t.appendChild(v)}
  $('#modal').classList.add('on');$('#mclose').focus()};
+$('#grid').addEventListener('mouseover',e=>{const w=e.target.closest('.work');if(!w||w.contains(e.relatedTarget))return;const v=w.querySelector('video');if(v)v.play().catch(()=>{})});
+$('#grid').addEventListener('mouseout',e=>{const w=e.target.closest('.work');if(!w||w.contains(e.relatedTarget))return;const v=w.querySelector('video');if(v){v.pause();v.currentTime=.5}});
 function closeM(){const v=$('#mthumb video');if(v){v.pause();v.remove()}const pl=$('#mthumb .play');if(pl)pl.style.display='';$('#mthumb').classList.remove('vid');$('#modal').classList.remove('on')}
 $('#mclose').onclick=closeM;$('#modal').onclick=e=>{if(e.target.id==='modal')closeM()};addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
 
