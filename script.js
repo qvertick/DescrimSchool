@@ -29,7 +29,7 @@ const PORTFOLIO=[ // замените на свои работы: v — путь
  {k:'motion',t:{ru:'YouTube-интро',en:'YouTube intro'},d:{ru:'Заставка для канала.',en:'A channel intro.'},c:['#6e7fe8','#8a56b8']},
  {k:'edit',t:{ru:'Сториз и Reels',en:'Stories and Reels'},d:{ru:'Серия коротких вертикальных видео.',en:'A series of short vertical videos.'},c:['#8b78f0','#4a5fb8']},
  {k:'3d',t:{ru:'Сцена в Blender',en:'Blender scene'},d:{ru:'Окружение и свет, рендер в AE.',en:'Environment and lighting, rendered in AE.'},c:['#7a66d8','#35509f']}];
-
+ {k:'3d',t:{ru:'Плавная 3д анимация',en:'Smooth 3D animation'},d:{ru:'Красивая и плавная анимация в After Effects.',en:'Beautiful and smooth animation in After Effects.'},c:['#5f7fe0','#6d4fb8']},
 // Все тексты интерфейса / all UI texts
 const UI={
  ru:{title:'WHYDESCR1M — курсы по After Effects, моушену и 3D',tab_courses:'Курсы',tab_portfolio:'Портфолио',
