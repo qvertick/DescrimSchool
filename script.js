@@ -31,7 +31,7 @@ const PORTFOLIO = [ // замените на свои работы: v — пут
  {k:'motion',t:{ru:'YouTube-интро',en:'YouTube intro'},d:{ru:'Заставка для канала.',en:'A channel intro.'},c:['#6e7fe8','#8a56b8']},
  {k:'edit',t:{ru:'Сториз и Reels',en:'Stories and Reels'},d:{ru:'Серия коротких вертикальных видео.',en:'A series of short vertical videos.'},c:['#8b78f0','#4a5fb8']},
  {k:'3d',t:{ru:'Сцена в Blender',en:'Blender scene'},d:{ru:'Окружение и свет, рендер в AE.',en:'Environment and lighting, rendered in AE.'},c:['#7a66d8','#35509f']},
- {k:'motion',t:{ru:'Анимация в AE',en:'Animation in AE'},d:{ru:'Анимация объектов и персонажей в After Effects.',en:'Object and character animation in After Effects.'},c:['#8f7be6','#3b4aa8']}
+ {k:'motion',t:{ru:'Анимация в AE',en:'Animation in AE'},d:{ru:'Анимация объектов и персонажей в After Effects.',en:'Object and character animation in After Effects.'},c:['#9a86ee','#6a3fb0']}
 ];
 
 // Все тексты интерфейса / all UI texts
@@ -148,7 +148,7 @@ setInterval(()=>{
  pupils.forEach(p=>p.style.transform=`translate(${ex*3}px,${ey*3}px)`)},100);
 
 // tabs
-function go(v){if(!$('#v-'+v))v='courses';$$('.view').forEach(e=>e.classList.toggle('on',e.id==='v-'+v));$$('.tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===v));scrollTo({top:0});try{history.replaceState(null,'','#'+v)}catch(e){}}
+function go(v){if(!$('#v-'+v))v='courses';$$('.view').forEach(e=>e.classList.toggle('on',e.id==='v-'+v));$$('.tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===v));scrollTo({top:0});try{history.replaceState(null,'',v==='courses'?location.pathname+location.search:'#'+v)}catch(e){}}
 $$('.tabs button').forEach(b=>b.onclick=()=>go(b.dataset.v));
 document.addEventListener('click',e=>{
  const g=e.target.closest('[data-go]');if(g)go(g.dataset.go);
