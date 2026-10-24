@@ -20,7 +20,9 @@ const COURSES=[
  {id:'all',p:{RUB:24000,USD:290},hot:1,
   n:{ru:'Всё включено',en:'All-in-one'},
   desc:{ru:'Три курса в одном пакете и поддержка на всём пути.',en:'All three courses in one bundle, with support all the way.'},
-  inc:{ru:['Все курсы выше','Постоянная связь со мной','Помогу выйти на 1 клиента'],en:['All the courses above','Direct contact with me',"I'll help you land your first client"]},learn:null}];
+  inc:{ru:['Все курсы выше','Постоянная связь со мной','Помогу выйти на 1 клиента'],en:['All the courses above','Direct contact with me',"I'll help you land your first client"]},
+  learn:null}
+];
 
 const PORTFOLIO = [ // замените на свои работы: v — путь к видео (videos/name.mp4), p — обложка (videos/name.jpg), href — внешняя ссылка
  {k:'3d',t:{ru:'3D-продукт',en:'3D product'},d:{ru:'Модель в Blender, финал в After Effects.',en:'Modeled in Blender, finished in After Effects.'},c:['#5f7fe0','#6d4fb8']},
@@ -31,6 +33,7 @@ const PORTFOLIO = [ // замените на свои работы: v — пут
  {k:'3d',t:{ru:'Сцена в Blender',en:'Blender scene'},d:{ru:'Окружение и свет, рендер в AE.',en:'Environment and lighting, rendered in AE.'},c:['#7a66d8','#35509f']},
  {k:'motion',t:{ru:'Анимация в AE',en:'Animation in AE'},d:{ru:'Анимация объектов и персонажей в After Effects.',en:'Object and character animation in After Effects.'},c:['#8f7be6','#3b4aa8']}
 ];
+
 // Все тексты интерфейса / all UI texts
 const UI={
  ru:{title:'WHYDESCR1M — курсы по After Effects, моушену и 3D',tab_courses:'Курсы',tab_portfolio:'Портфолио',
@@ -174,7 +177,7 @@ function renderCourses(first){
   return `<article class="glass card ${c.hot?'hot':''} ${open?'open':''}" id="c-${c.id}">
 ${c.hot?`<span class="tag">${T('saveTag',money(sumBase()-pr))}</span>`:''}<h3>${n}</h3><div class="price ${first?'':'pop'}" data-v="${pr}" data-p="${pr}">${money(pr)}</div><p class="desc">${L(c.desc)}</p>
 <ul>${L(c.inc).map(x=>`<li>${x}</li>`).join('')}</ul>
-${learn?`<button class="tog" aria-expanded="${open}">${T('learn')} <i>▾</i></button><div class="more"><div>${learn.map(l=>`<div class="learn"><b>${l[0>]}</b<span>${l[1]}</span></div>`).join('')}</div></div>`:''}
+${learn?`<button class="tog" aria-expanded="${open}">${T('learn')} <i>▾</i></button><div class="more"><div>${learn.map(l=>`<div class="learn"><b>${l[0]}</b><span>${l[1]}</span></div>`).join('')}</div></div>`:''}
 <a class="btn buy ${c.hot?'':'ghost'}" href="${TG}?text=${encodeURIComponent(T('msgCourse',n,money(pr)))}" target="_blank" rel="noopener" data-mag><span class="t t1">${T('buy')} ${money(pr)}${ARR}</span><span class="t t2">${CHK}${T('opening')}</span></a></article>`}).join('');
  if(first)$$('#courses .price').forEach(e=>{e.dataset.v=0;count(e,+e.dataset.p)});
 }
