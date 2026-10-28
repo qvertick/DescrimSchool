@@ -31,14 +31,15 @@ const PORTFOLIO = [ // замените на свои работы: v — пут
  {k:'motion',t:{ru:'YouTube-интро',en:'YouTube intro'},d:{ru:'Заставка для канала.',en:'A channel intro.'},c:['#6e7fe8','#8a56b8']},
  {k:'edit',t:{ru:'Сториз и Reels',en:'Stories and Reels'},d:{ru:'Серия коротких вертикальных видео.',en:'A series of short vertical videos.'},c:['#8b78f0','#4a5fb8']},
  {k:'3d',t:{ru:'Сцена в Blender',en:'Blender scene'},d:{ru:'Окружение и свет, рендер в AE.',en:'Environment and lighting, rendered in AE.'},c:['#7a66d8','#35509f']},
- {k:'motion',t:{ru:'Анимация в AE',en:'Animation in AE'},d:{ru:'Анимация объектов и персонажей в After Effects.',en:'Object and character animation in After Effects.'},c:['#9a86ee','#6a3fb0'],v:'космос by descrim.mp4'},
+ {k:'motion',t:{ru:'Анимация в AE',en:'Animation in AE'},d:{ru:'Анимация объектов и персонажей в After Effects.',en:'Object and character animation in After Effects.'},c:['#9a86ee','#6a3fb0']}
 ];
+
 // Все тексты интерфейса / all UI texts
 const UI={
  ru:{title:'WHYDESCR1M — курсы по After Effects, моушену и 3D',tab_courses:'Курсы',tab_portfolio:'Портфолио',
   hero_h1:'Научу делать моушен и 3D, которые хочется смотреть',
   hero_p:'Курсы по After Effects, моушену и Blender. Домашки проверяю лично, а в пакете «Всё включено» помогу выйти на первого клиента.',
-  cta_pick:'Выбрать курс',cta_tg:'Написать в Telegram',rec:'Монтаж идёт',
+  cta_pick:'Выбрать курс',pc_open:'Рассчитать стоимость',pc_kicker:'КАЛЬКУЛЯТОР СТОИМОСТИ',pc_title:'Соберите свой набор',pc_intro:'Выберите курсы — стоимость и экономия обновятся автоматически.',pc_total_label:'Итого к оплате',pc_contact:'Обсудить в Telegram',pc_note:'Финальная стоимость подтверждается при записи.',pc_empty:'Выберите хотя бы один курс, чтобы увидеть итог.',pc_bundle:'Пакет «Всё включено»',pc_saving:s=>`Экономия ${s} по сравнению с покупкой курсов отдельно`,pc_desc:{ae:'База After Effects для начинающих',mo:'Продвинутый моушен в After Effects', '3d':'Blender и 3D-графика'},rec:'Монтаж идёт',
   h_courses:'Курсы и цены',p_courses:'Нажмите «Чему научитесь», чтобы увидеть программу курса.',
   h_build:'Соберите свой набор',p_build:'Отмечайте курсы и смотрите итог. Если взять все три, выгоднее пакет «Всё включено».',
   topay:'К оплате',enroll:'Записаться в Telegram',opening:'Открываю Telegram',
@@ -56,7 +57,7 @@ const UI={
  en:{title:'WHYDESCR1M — After Effects, motion design and 3D courses',tab_courses:'Courses',tab_portfolio:'Portfolio',
   hero_h1:"I'll teach you motion and 3D that people want to watch",
   hero_p:'Courses on After Effects, motion design and Blender. I review every assignment personally, and the All-in-one bundle includes help landing your first client.',
-  cta_pick:'Choose a course',cta_tg:'Message on Telegram',rec:'Editing in progress',
+  cta_pick:'Choose a course',pc_open:'Calculate price',pc_kicker:'PRICE CALCULATOR',pc_title:'Build your bundle',pc_intro:'Choose courses — the total and savings update automatically.',pc_total_label:'Total to pay',pc_contact:'Discuss on Telegram',pc_note:'The final price is confirmed when you enroll.',pc_empty:'Select at least one course to see the total.',pc_bundle:'All-in-one bundle',pc_saving:s=>`You save ${s} compared with buying courses separately`,pc_desc:{ae:'After Effects basics for beginners',mo:'Advanced motion design in After Effects','3d':'Blender and 3D graphics'},rec:'Editing in progress',
   h_courses:'Courses and prices',p_courses:'Tap “What you’ll learn” to see the course program.',
   h_build:'Build your bundle',p_build:'Select courses to see the total. Taking all three? The All-in-one bundle costs less.',
   topay:'Total',enroll:'Enroll on Telegram',opening:'Opening Telegram',
@@ -200,6 +201,54 @@ function calc(instant){
  $('#enroll').href=TG+'?text='+encodeURIComponent(txt);
 }
 
+// Separate modal price calculator
+const PCSEL=new Set();
+const pcModal=$('#priceCalcModal');
+let pcReturnFocus=null;
+function renderPriceCalc(){
+ const list=$('#pc-course-list');
+ list.innerHTML=BASE.map(c=>`<button type="button" class="pc-choice" data-pc-id="${c.id}" aria-pressed="${PCSEL.has(c.id)}">
+   <span class="pc-check" aria-hidden="true">✓</span>
+   <span class="pc-choice-main"><span class="pc-choice-name">${L(c.n)}</span><span class="pc-choice-desc">${UI[lang].pc_desc[c.id]}</span></span>
+   <span class="pc-choice-price">${money(price(c))}</span>
+ </button>`).join('');
+ updatePriceCalc();
+}
+function updatePriceCalc(){
+ const sel=BASE.filter(c=>PCSEL.has(c.id));
+ const sum=sel.reduce((a,c)=>a+price(c),0);
+ const full=sel.length===BASE.length;
+ const total=full?price(PACK):sum;
+ $('#pc-total').textContent=money(total);
+ $('#pc-breakdown').innerHTML=sel.length
+  ?sel.map(c=>`<div class="pc-breakdown-row"><span>${L(c.n)}</span><span>${money(price(c))}</span></div>`).join('')+(full?`<div class="pc-breakdown-row"><strong>${T('pc_bundle')}</strong><strong>${money(price(PACK))}</strong></div>`:'')
+  :`<div>${T('pc_empty')}</div>`;
+ $('#pc-saving').textContent=full?T('pc_saving',money(sum-price(PACK))):'';
+ const msg=sel.length?T('msgPick',full?T('msgBundle'):sel.map(c=>L(c.n)).join(', '),money(total)):T('msgEmpty');
+ $('#pc-contact').href=TG+'?text='+encodeURIComponent(msg);
+ $$('#pc-course-list [data-pc-id]').forEach(b=>b.setAttribute('aria-pressed',PCSEL.has(b.dataset.pcId)));
+}
+function openPriceCalc(){
+ pcReturnFocus=document.activeElement;
+ renderPriceCalc();
+ pcModal.classList.add('on');pcModal.setAttribute('aria-hidden','false');document.body.classList.add('pc-open');
+ const close=pcModal.querySelector('button[data-pc-close]');
+ if(close)close.focus();
+}
+function closePriceCalc(){
+ if(!pcModal.classList.contains('on'))return;
+ pcModal.classList.remove('on');pcModal.setAttribute('aria-hidden','true');document.body.classList.remove('pc-open');
+ if(pcReturnFocus&&typeof pcReturnFocus.focus==='function')pcReturnFocus.focus();
+}
+document.addEventListener('click',e=>{
+ const opener=e.target.closest('[data-pc-open]');
+ if(opener){openPriceCalc();return}
+ if(e.target.closest('[data-pc-close]')){closePriceCalc();return}
+ const choice=e.target.closest('[data-pc-id]');
+ if(choice){const id=choice.dataset.pcId;PCSEL.has(id)?PCSEL.delete(id):PCSEL.add(id);updatePriceCalc()}
+});
+addEventListener('keydown',e=>{if(e.key==='Escape')closePriceCalc()});
+
 // portfolio
 const KINDS=['all','motion','3d','edit'];let kind='all';
 function renderFilters(){$('#filters').innerHTML=KINDS.map(k=>`<button class="chip" data-k="${k}" aria-pressed="${k===kind}">${T('f_'+k)}</button>`).join('')}
@@ -217,7 +266,7 @@ function closeM(){const v=$('#mthumb video');if(v){v.pause();v.remove()}const pl
 $('#mclose').onclick=closeM;$('#modal').onclick=e=>{if(e.target.id==='modal')closeM()};addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
 
 // language + currency switches
-function refresh(first){applyStatic();renderCourses(first);renderOpts();calc(!first);renderFilters();renderGrid();closeM()}
+function refresh(first){applyStatic();renderCourses(first);renderOpts();calc(!first);renderFilters();renderGrid();renderPriceCalc();closeM()}
 let swapT;
 $('#lc').onclick=e=>{const b=e.target.closest('button');if(!b||b.dataset.l===lang)return;
  lang=b.dataset.l;cur=lang==='en'?'USD':'RUB';store.set('lang',lang);

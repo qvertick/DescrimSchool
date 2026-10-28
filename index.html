@@ -29,7 +29,7 @@
 <div>
 <h1 data-i18n="hero_h1"></h1>
 <p data-i18n="hero_p"></p>
-<div class="row"><a class="btn" href="#courses-list" data-mag data-i18n="cta_pick"></a><a class="btn ghost" href="https://t.me/WHYDESCR1M" target="_blank" rel="noopener" data-mag data-i18n="cta_tg"></a></div>
+<div class="row"><a class="btn" href="#courses-list" data-mag data-i18n="cta_pick"></a><button class="btn ghost" type="button" data-pc-open data-i18n="pc_open"></button><a class="btn ghost" href="https://t.me/WHYDESCR1M" target="_blank" rel="noopener" data-mag data-i18n="cta_tg"></a></div>
 </div>
 <div class="glass tl" aria-hidden="true">
 <div class="tl-top"><span class="rec"><i></i><span data-i18n="rec"></span></span><span id="tc">00:00:00</span></div>
@@ -76,6 +76,27 @@
 </div>
 </main>
 <footer><div class="scene" id="scene" aria-hidden="true"></div></footer>
+
+
+<!-- ===== PRICE CALCULATOR MODAL ===== -->
+<div class="pc-modal" id="priceCalcModal" aria-hidden="true">
+  <div class="pc-backdrop" data-pc-close></div>
+  <section class="pc-dialog glass" role="dialog" aria-modal="true" aria-labelledby="pc-title">
+    <button class="pc-x" type="button" data-pc-close aria-label="Close calculator">×</button>
+    <div class="pc-kicker" data-i18n="pc_kicker">PRICE CALCULATOR</div>
+    <h2 id="pc-title" data-i18n="pc_title">Соберите свой набор</h2>
+    <p class="pc-intro" data-i18n="pc_intro">Выберите курсы — стоимость и экономия обновятся автоматически.</p>
+    <div class="pc-course-list" id="pc-course-list"></div>
+    <div class="pc-result">
+      <div class="pc-result-label" data-i18n="pc_total_label">Итого к оплате</div>
+      <div class="pc-total" id="pc-total">0 ₽</div>
+      <div class="pc-breakdown" id="pc-breakdown"></div>
+      <div class="pc-saving" id="pc-saving"></div>
+      <a class="btn pc-contact" id="pc-contact" href="https://t.me/WHYDESCR1M" target="_blank" rel="noopener" data-mag data-i18n="pc_contact">Обсудить в Telegram</a>
+    </div>
+    <p class="pc-footnote" data-i18n="pc_note">Финальная стоимость подтверждается при записи.</p>
+  </section>
+</div>
 
 <div class="modal" id="modal"><div class="glass mbox"><div class="thumb" id="mthumb"><div class="play"><i>▶</i></div></div><div class="mi"><h3 id="mt"></h3><p id="md"></p><div class="row"><a class="btn" id="mlink" href="https://t.me/WHYDESCR1M" target="_blank" rel="noopener"></a><button class="btn ghost" id="mclose" data-i18n="close"></button></div></div></div></div>
 <div class="toast glass" id="toast" role="status"></div>
