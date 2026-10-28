@@ -222,3 +222,19 @@ main.swap{opacity:0;transform:translateY(6px)}
 body.pc-open{overflow:hidden}
 @media(max-width:520px){.pc-modal{padding:10px}.pc-dialog{padding:24px 16px 18px;border-radius:22px;max-height:92dvh}.pc-x{top:12px;right:12px}.pc-choice{padding:12px 10px;gap:9px}.pc-choice-price{font-size:12px}.pc-choice-desc{font-size:11px}.pc-result{padding:17px}}
 @media(prefers-reduced-motion:reduce){.pc-modal,.pc-dialog{transition:none}}
+/* Video-editing calculator controls */
+.pc-form{display:grid;gap:15px;margin-top:18px}
+.pc-field{display:grid;gap:8px;min-width:0;font-size:13px;font-weight:750}
+.pc-field select,.pc-field input{width:100%;min-height:46px;border:1px solid var(--stroke);border-radius:13px;background:rgba(20,15,42,.78);color:var(--text);padding:11px 13px;font:inherit;outline:none}
+.pc-field select:focus,.pc-field input:focus{border-color:var(--acc);box-shadow:0 0 0 3px color-mix(in srgb,var(--acc) 18%,transparent)}
+.pc-field option{background:#21183f;color:#fff}
+.pc-field small,.pc-rush small{display:block;color:var(--muted);font-size:11px;line-height:1.55;font-weight:450}
+.pc-styles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.pc-style{display:grid;align-content:start;gap:7px;text-align:left;min-height:112px;padding:13px;border:1px solid var(--stroke);border-radius:15px;background:rgba(127,120,170,.08);color:var(--text);font:inherit;cursor:pointer;transition:border-color .2s,background .2s,transform .2s}
+.pc-style:hover{transform:translateY(-1px);border-color:color-mix(in srgb,var(--acc) 65%,transparent)}
+.pc-style[aria-pressed=true]{border-color:var(--acc);background:color-mix(in srgb,var(--acc) 17%,transparent);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--acc) 35%,transparent)}
+.pc-style b{font-size:13px}.pc-style small{font-size:11px;line-height:1.5;color:var(--muted);font-weight:450}
+.pc-rush{display:flex;align-items:flex-start;gap:12px;padding:14px;border:1px solid color-mix(in srgb,var(--acc) 35%,var(--stroke));border-radius:15px;background:color-mix(in srgb,var(--acc) 8%,transparent);cursor:pointer}
+.pc-rush input{width:18px;height:18px;flex:none;margin:2px 0 0;accent-color:var(--acc2)}.pc-rush span{display:grid;gap:4px}.pc-rush b{font-size:13px}
+.pc-result{margin-top:18px}
+@media(max-width:520px){.pc-styles{grid-template-columns:1fr}.pc-style{min-height:0}.pc-field select,.pc-field input{font-size:16px}}
