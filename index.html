@@ -1,84 +1,84 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>WHYDESCR1M — курсы по After Effects, моушену и 3D</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600&family=Manrope:wght@400;500;600;700&family=Pixelify+Sans:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="WHYDESCR1M — обучение motion design, After Effects и 3D.">
+  <title>WHYDESCR1M — Motion Design School</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="grain"></div><div id="glow"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="nav wrap">
+    <a class="brand" href="#home" aria-label="WHYDESCR1M home">WHY<span>DESCR1M</span><i>®</i></a>
+    <nav>
+      <a href="#courses" data-i18n="navCourses">Курсы</a>
+      <a href="#works" data-i18n="navWorks">Портфолио</a>
+      <a href="#about" data-i18n="navAbout">О школе</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="switch" id="langToggle" aria-label="Switch language">RU <span>/</span> EN</button>
+      <button class="switch" id="currencyToggle" aria-label="Switch currency">₽ <span>/</span> $</button>
+      <a class="nav-cta" href="#courses" data-i18n="navCta">Выбрать курс ↗</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+    </div>
+  </header>
 
-<header>
-<nav class="glass">
-<b>WHYDESCR1M</b>
-<div class="tabs" role="tablist"><button role="tab" data-v="courses" aria-selected="true" data-i18n="tab_courses">Курсы</button><button role="tab" data-v="portfolio" aria-selected="false" data-i18n="tab_portfolio">Портфолио</button></div>
-<div class="ctl">
-<div class="lc" id="lc" role="group" aria-label="Language and currency" data-lang="ru"><span class="lc-i"></span><button data-l="ru" aria-pressed="true">RU · ₽</button><button data-l="en" aria-pressed="false">EN · $</button></div>
-</div>
-</nav>
-</header>
+  <main>
+    <section class="hero wrap" id="home">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span class="live-dot"></span><span data-i18n="eyebrow">ШКОЛА DIGITAL-ИСКУССТВА · 2026</span></p>
+        <h1 data-i18n="heroTitle">Преврати идеи<br>в <span class="outline">движение.</span></h1>
+        <p class="hero-sub" data-i18n="heroSub">Освой motion design, After Effects и 3D. Создавай работы, которые останавливают скролл и открывают новые возможности.</p>
+        <div class="hero-buttons">
+          <a class="button button-primary" href="#courses" data-i18n="heroCta">Найти свой курс <span>↗</span></a>
+          <a class="text-link" href="#works" data-i18n="heroSecondary">Смотреть работы <span>↓</span></a>
+        </div>
+        <div class="hero-proof"><div class="avatar-stack"><span>W</span><span>D</span><span>✳</span></div><p><strong data-i18n="proofStrong">Практика вместо теории</strong><br><span data-i18n="proofSmall">От первого кадра до сильного портфолио</span></p></div>
+      </div>
+      <div class="hero-art reveal" aria-label="Abstract 3D artwork">
+        <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+        <div class="art-core"><div class="core-shine"></div><span>W<span class="accent">/</span>D</span></div>
+        <div class="art-tag tag-top">MOTION<br>IS EMOTION</div>
+        <div class="art-tag tag-bottom"><span class="live-dot"></span> DESIGN IN MOTION <b>✳</b></div>
+        <div class="art-index">001 — 026</div>
+      </div>
+      <div class="hero-bottom"><span data-i18n="heroBottom">ИДЕИ НЕ ДОЛЖНЫ СТОЯТЬ НА МЕСТЕ</span><span>SCROLL TO EXPLORE ↓</span></div>
+    </section>
 
-<main class="wrap">
-<!-- ===== КУРСЫ / COURSES ===== -->
-<div class="view on" id="v-courses">
-<div class="hero">
-<div>
-<h1 data-i18n="hero_h1"></h1>
-<p data-i18n="hero_p"></p>
-<div class="row"><a class="btn" href="#courses-list" data-mag data-i18n="cta_pick"></a><a class="btn ghost" href="https://t.me/WHYDESCR1M" target="_blank" rel="noopener" data-mag data-i18n="cta_tg"></a></div>
-</div>
-<div class="glass tl" aria-hidden="true">
-<div class="tl-top"><span class="rec"><i></i><span data-i18n="rec"></span></span><span id="tc">00:00:00</span></div>
-<div class="tracks" id="tracks"><div id="ph"></div></div>
-</div>
-</div>
+    <section class="ticker" aria-label="Specialties"><div class="ticker-track"><span>AFTER EFFECTS ✳ MOTION DESIGN ✳ 3D ART ✳ CREATIVE THINKING ✳</span><span>AFTER EFFECTS ✳ MOTION DESIGN ✳ 3D ART ✳ CREATIVE THINKING ✳</span></div></section>
 
-<section id="courses-list">
-<div class="head"><h2 data-i18n="h_courses"></h2><p data-i18n="p_courses"></p></div>
-<div class="courses" id="courses"></div>
-</section>
+    <section class="section wrap" id="courses">
+      <div class="section-head reveal"><div><p class="eyebrow" data-i18n="coursesEyebrow">01 / ОБУЧЕНИЕ</p><h2 data-i18n="coursesTitle">Выбери свой<br><span class="muted">уровень движения.</span></h2></div><p class="section-note" data-i18n="coursesNote">Не просто смотри уроки — собирай навыки, делай проекты и формируй собственный визуальный язык.</p></div>
+      <div class="course-grid">
+        <article class="course-card reveal"><div class="course-visual visual-green"><span class="course-number">01</span><div class="visual-type">MOVE<br>BETTER<span>®</span></div><span class="visual-foot">AE / START</span></div><div class="course-meta"><span data-i18n="beginner">С НУЛЯ</span><span>6 НЕДЕЛЬ</span></div><h3 data-i18n="course1">Motion Base</h3><p data-i18n="course1Desc">База After Effects, ритм, композиция и первые уверенные анимации.</p><div class="course-bottom"><strong data-price="base">₽ 14 900</strong><a href="#contact" class="round-arrow" aria-label="Подробнее о Motion Base">↗</a></div></article>
+        <article class="course-card reveal"><div class="course-visual visual-purple"><span class="course-number">02</span><div class="visual-sphere"></div><div class="visual-type">MAKE IT<br>MOVE<span>®</span></div><span class="visual-foot">MOTION / PRO</span></div><div class="course-meta"><span data-i18n="intermediate">СРЕДНИЙ УРОВЕНЬ</span><span>8 НЕДЕЛЬ</span></div><h3 data-i18n="course2">Motion Artist</h3><p data-i18n="course2Desc">Сложные переходы, выразительная типографика и коммерческие проекты.</p><div class="course-bottom"><strong data-price="artist">₽ 24 900</strong><a href="#contact" class="round-arrow" aria-label="Подробнее о Motion Artist">↗</a></div></article>
+        <article class="course-card reveal"><div class="course-visual visual-orange"><span class="course-number">03</span><div class="visual-orb"></div><div class="visual-type">BEYOND<br>REALITY<span>®</span></div><span class="visual-foot">3D / ADVANCED</span></div><div class="course-meta"><span data-i18n="advanced">ПРОДВИНУТЫЙ</span><span>10 НЕДЕЛЬ</span></div><h3 data-i18n="course3">3D Playground</h3><p data-i18n="course3Desc">Объём, материалы, свет и создание эффектных 3D-сцен.</p><div class="course-bottom"><strong data-price="3d">₽ 32 900</strong><a href="#contact" class="round-arrow" aria-label="Подробнее о 3D Playground">↗</a></div></article>
+      </div>
+      <p class="disclaimer" data-i18n="priceNote">* Демонстрационные цены — замени их на реальные перед публикацией.</p>
+    </section>
 
-<section id="build">
-<div class="head"><h2 data-i18n="h_build"></h2><p data-i18n="p_build"></p></div>
-<div class="build">
-<div class="glass bp" id="opts"></div>
-<div class="glass sum">
-<div class="lbl" style="color:var(--muted);font-size:14px" data-i18n="topay"></div>
-<div class="total" id="total" data-v="0">0</div>
-<div id="lines"></div>
-<div class="save" id="save"></div>
-<a class="btn buy" id="enroll" href="https://t.me/WHYDESCR1M" target="_blank" rel="noopener" data-mag><span class="t t1"><span data-i18n="enroll"></span></span><span class="t t2"><span data-i18n="opening"></span></span></a>
-</div>
-</div>
-</section>
+    <section class="manifesto">
+      <div class="wrap manifesto-inner reveal"><p class="eyebrow" data-i18n="manifestoEyebrow">НЕ ЕЩЁ ОДИН ВИДЕОКУРС</p><h2 data-i18n="manifestoTitle">Меньше бесконечных туториалов.<br><span>Больше работ, которыми гордишься.</span></h2><div class="manifesto-bottom"><p data-i18n="manifestoText">Обучение построено вокруг практики: понятные задачи, обратная связь и проекты, которые можно добавить в портфолио.</p><a class="button button-light" href="#about" data-i18n="manifestoCta">Как мы учим ↗</a></div></div>
+    </section>
 
-<section>
-<div class="glass contact">
-<h2 data-i18n="h_q"></h2>
-<p data-i18n="p_q"></p>
-<a class="btn" href="https://t.me/WHYDESCR1M" target="_blank" rel="noopener" data-mag>@WHYDESCR1M</a>
-</div>
-</section>
-</div>
+    <section class="section wrap" id="works">
+      <div class="section-head reveal"><div><p class="eyebrow" data-i18n="worksEyebrow">02 / ИЗБРАННЫЕ РАБОТЫ</p><h2 data-i18n="worksTitle">Движение говорит<br><span class="muted">громче слов.</span></h2></div><p class="section-note" data-i18n="worksNote">Здесь будут реальные работы школы и учеников. Сейчас это визуальные заглушки для демонстрации дизайна.</p></div>
+      <div class="work-grid">
+        <a class="work-tile work-one reveal" href="#contact"><div class="work-art"><span class="work-word">FORM<br>FOLLOWS<br>FEELING</span><div class="work-ring"></div></div><div class="work-caption"><span>01 / EXPERIMENTAL TYPE</span><span>↗</span></div></a>
+        <a class="work-tile work-two reveal" href="#contact"><div class="work-art"><div class="work-cube"></div><span class="work-word small">OBJECT<br>STUDY_02</span></div><div class="work-caption"><span>02 / 3D DESIGN</span><span>↗</span></div></a>
+        <a class="work-tile work-three reveal" href="#contact"><div class="work-art"><span class="work-word">MAKE<br>NOISE<span class="asterisk">✳</span></span><div class="work-lines"></div></div><div class="work-caption"><span>03 / MOTION POSTER</span><span>↗</span></div></a>
+      </div>
+    </section>
 
-<!-- ===== ПОРТФОЛИО / PORTFOLIO ===== -->
-<div class="view" id="v-portfolio">
-<section style="padding-top:60px">
-<div class="head"><h2 data-i18n="h_port"></h2><p data-i18n="p_port"></p></div>
-<div class="filters" id="filters" role="group"></div>
-<div class="grid" id="grid"></div>
-</section>
-<section style="padding-top:0"><div class="glass contact"><h2 data-i18n="h_want"></h2><p data-i18n="p_want"></p><button class="btn" data-go="courses" data-mag data-i18n="cta_courses"></button></div></section>
-</div>
-</main>
-<footer><div class="scene" id="scene" aria-hidden="true"></div></footer>
+    <section class="section about-section" id="about"><div class="wrap about-grid reveal"><div><p class="eyebrow" data-i18n="aboutEyebrow">03 / ПОДХОД</p><h2 data-i18n="aboutTitle">Учись создавать.<br><span class="muted">Не повторять.</span></h2></div><div class="about-copy"><p data-i18n="aboutText">WHYDESCR1M — концепция школы для тех, кто хочет развивать визуальное мышление и превращать идеи в выразительные цифровые проекты.</p><div class="stat-row"><div><strong>01</strong><span data-i18n="stat1">Практические задания</span></div><div><strong>02</strong><span data-i18n="stat2">Работы для портфолио</span></div><div><strong>03</strong><span data-i18n="stat3">Рост в своём темпе</span></div></div></div></div></section>
 
-<div class="modal" id="modal"><div class="glass mbox"><div class="thumb" id="mthumb"><div class="play"><i>▶</i></div></div><div class="mi"><h3 id="mt"></h3><p id="md"></p><div class="row"><a class="btn" id="mlink" href="https://t.me/WHYDESCR1M" target="_blank" rel="noopener"></a><button class="btn ghost" id="mclose" data-i18n="close"></button></div></div></div></div>
-<div class="toast glass" id="toast" role="status"></div>
-<script src="script.js"></script>
+    <section class="contact-section wrap" id="contact"><div class="contact-box reveal"><p class="eyebrow" data-i18n="contactEyebrow">ТВОЙ СЛЕДУЮЩИЙ ШАГ</p><h2 data-i18n="contactTitle">Готов придать идеям<br><span>движение?</span></h2><p data-i18n="contactText">Оставь заявку, чтобы узнать подробности о программах и ближайшем наборе.</p><a class="button button-primary" href="mailto:hello@example.com?subject=WHYDESCR1M%20course" data-i18n="contactCta">Обсудить обучение ↗</a><span class="contact-star">✳</span></div></section>
+  </main>
+
+  <footer class="footer wrap"><a class="brand" href="#home">WHY<span>DESCR1M</span><i>®</i></a><span>© 2026 WHYDESCR1M — <span data-i18n="footer">Создавай движение.</span></span><a href="#home" data-i18n="backTop">Наверх ↑</a></footer>
+  <script src="script.js"></script>
 </body>
 </html>
