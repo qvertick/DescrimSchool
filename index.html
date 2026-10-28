@@ -1,84 +1,94 @@
-<!doctype html>
-<html lang="ru">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>WHYDESCR1M — курсы по After Effects, моушену и 3D</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600&family=Manrope:wght@400;500;600;700&family=Pixelify+Sans:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="grain"></div><div id="glow"></div>
+<!-- ВСТАВЬ ЭТОТ ФРАГМЕНТ В СУЩЕСТВУЮЩИЙ index.html ПЕРЕД </body>.
+     Он добавляет только кнопку и модальное окно — не заменяет содержимое сайта. -->
+<button class="pricecalc-open" type="button" data-pricecalc-open>
+  <span data-pc-text="open">Рассчитать стоимость</span><span aria-hidden="true">↗</span>
+</button>
 
-<header>
-<nav class="glass">
-<b>WHYDESCR1M</b>
-<div class="tabs" role="tablist"><button role="tab" data-v="courses" aria-selected="true" data-i18n="tab_courses">Курсы</button><button role="tab" data-v="portfolio" aria-selected="false" data-i18n="tab_portfolio">Портфолио</button></div>
-<div class="ctl">
-<div class="lc" id="lc" role="group" aria-label="Language and currency" data-lang="ru"><span class="lc-i"></span><button data-l="ru" aria-pressed="true">RU · ₽</button><button data-l="en" aria-pressed="false">EN · $</button></div>
-</div>
-</nav>
-</header>
+<div class="pricecalc-backdrop" data-pricecalc-modal aria-hidden="true">
+  <section class="pricecalc-dialog" role="dialog" aria-modal="true" aria-labelledby="pricecalc-title">
+    <header class="pricecalc-header">
+      <div>
+        <p class="pricecalc-eyebrow"><span></span><span data-pc-text="eyebrow">VIDEO EDITING / PRICE CALCULATOR</span></p>
+        <h2 id="pricecalc-title" data-pc-text="title">Калькулятор стоимости</h2>
+      </div>
+      <div class="pricecalc-header-actions">
+        <div class="pricecalc-langs" aria-label="Язык">
+          <button type="button" class="is-active" data-pc-lang="ru">RU · ₽</button>
+          <button type="button" data-pc-lang="en">EN · $</button>
+        </div>
+        <button class="pricecalc-close" type="button" data-pricecalc-close aria-label="Закрыть окно">×</button>
+      </div>
+    </header>
 
-<main class="wrap">
-<!-- ===== КУРСЫ / COURSES ===== -->
-<div class="view on" id="v-courses">
-<div class="hero">
-<div>
-<h1 data-i18n="hero_h1"></h1>
-<p data-i18n="hero_p"></p>
-<div class="row"><a class="btn" href="#courses-list" data-mag data-i18n="cta_pick"></a><a class="btn ghost" href="https://t.me/WHYDESCR1M" target="_blank" rel="noopener" data-mag data-i18n="cta_tg"></a></div>
-</div>
-<div class="glass tl" aria-hidden="true">
-<div class="tl-top"><span class="rec"><i></i><span data-i18n="rec"></span></span><span id="tc">00:00:00</span></div>
-<div class="tracks" id="tracks"><div id="ph"></div></div>
-</div>
-</div>
+    <div class="pricecalc-content">
+      <div class="pricecalc-fields">
+        <section class="pricecalc-section">
+          <div class="pricecalc-section-title"><span>01</span><div><h3 data-pc-text="styleTitle">Стиль монтажа</h3><p data-pc-text="styleSub">Выбери формат своего видео</p></div></div>
+          <div class="pricecalc-styles">
+            <button type="button" class="pricecalc-style is-selected" data-pc-style="shortform" aria-pressed="true">
+              <span class="pc-style-tag">A / 01</span><strong>Short-form</strong><small data-pc-text="shortDesc">Динамичные вертикальные ролики для Reels, TikTok и Shorts.</small><i>↗</i>
+            </button>
+            <button type="button" class="pricecalc-style" data-pc-style="talkinghead" aria-pressed="false">
+              <span class="pc-style-tag">B / 02</span><strong>Talking Head</strong><small data-pc-text="talkDesc">Видео с человеком в кадре, субтитрами и дополнительными вставками.</small><i>↗</i>
+            </button>
+            <button type="button" class="pricecalc-style" data-pc-style="motion" aria-pressed="false">
+              <span class="pc-style-tag">C / 03</span><strong>Motion</strong><small data-pc-text="motionDesc">Анимация, моушн-графика, визуальные эффекты и композитинг.</small><i>↗</i>
+            </button>
+            <button type="button" class="pricecalc-style" data-pc-style="longform" aria-pressed="false">
+              <span class="pc-style-tag">D / 04</span><strong>Long-form</strong><small data-pc-text="longDesc">Длинные видео для YouTube, интервью и образовательного контента.</small><i>↗</i>
+            </button>
+          </div>
+        </section>
 
-<section id="courses-list">
-<div class="head"><h2 data-i18n="h_courses"></h2><p data-i18n="p_courses"></p></div>
-<div class="courses" id="courses"></div>
-</section>
+        <section class="pricecalc-section">
+          <div class="pricecalc-section-title"><span>02</span><div><h3 data-pc-text="complexityTitle">Сложность монтажа</h3><p data-pc-text="complexitySub">Уровень постпродакшена</p></div></div>
+          <div class="pricecalc-complexities">
+            <label class="pricecalc-choice is-selected"><input type="radio" name="pc-complexity" value="simple" checked><span class="pc-radio"></span><span><strong data-pc-text="simple">Базовый</strong><small data-pc-text="simpleDesc">Склейки, базовая цветокоррекция и звук</small></span><em>×1.0</em></label>
+            <label class="pricecalc-choice"><input type="radio" name="pc-complexity" value="standard"><span class="pc-radio"></span><span><strong data-pc-text="standard">Стандартный</strong><small data-pc-text="standardDesc">Ритм, саунд-дизайн, титры и вставки</small></span><em>×1.5</em></label>
+            <label class="pricecalc-choice"><input type="radio" name="pc-complexity" value="advanced"><span class="pc-radio"></span><span><strong data-pc-text="advanced">Сложный</strong><small data-pc-text="advancedDesc">Сложная графика, VFX, трекинг и композитинг</small></span><em>×2.2</em></label>
+          </div>
+        </section>
 
-<section id="build">
-<div class="head"><h2 data-i18n="h_build"></h2><p data-i18n="p_build"></p></div>
-<div class="build">
-<div class="glass bp" id="opts"></div>
-<div class="glass sum">
-<div class="lbl" style="color:var(--muted);font-size:14px" data-i18n="topay"></div>
-<div class="total" id="total" data-v="0">0</div>
-<div id="lines"></div>
-<div class="save" id="save"></div>
-<a class="btn buy" id="enroll" href="https://t.me/WHYDESCR1M" target="_blank" rel="noopener" data-mag><span class="t t1"><span data-i18n="enroll"></span></span><span class="t t2"><span data-i18n="opening"></span></span></a>
-</div>
-</div>
-</section>
+        <section class="pricecalc-section">
+          <div class="pricecalc-section-title"><span>03</span><div><h3 data-pc-text="durationTitle">Хронометраж</h3><p data-pc-text="durationSub">Длительность готового видео</p></div></div>
+          <div class="pricecalc-duration">
+            <div><label for="pc-duration" data-pc-text="durationLabel">Минут готового видео</label><strong><output id="pc-duration-output">1</output> <small data-pc-text="min">мин.</small></strong></div>
+            <input id="pc-duration" type="range" min="1" max="30" value="1">
+            <div class="pricecalc-range-labels"><span>1</span><span>30 <span data-pc-text="minShort">мин</span></span></div>
+          </div>
+        </section>
 
-<section>
-<div class="glass contact">
-<h2 data-i18n="h_q"></h2>
-<p data-i18n="p_q"></p>
-<a class="btn" href="https://t.me/WHYDESCR1M" target="_blank" rel="noopener" data-mag>@WHYDESCR1M</a>
-</div>
-</section>
-</div>
+        <section class="pricecalc-section">
+          <div class="pricecalc-section-title"><span>04</span><div><h3 data-pc-text="extrasTitle">Дополнительные условия</h3><p data-pc-text="extrasSub">Настрой стоимость под свой проект</p></div></div>
+          <div class="pricecalc-revisions">
+            <div><strong data-pc-text="revisionsTitle">Раунды правок</strong><small data-pc-text="revisionsSub">2 раунда включены в стоимость</small></div>
+            <div class="pricecalc-counter"><button type="button" data-pc-minus aria-label="Меньше правок">−</button><output id="pc-revisions">2</output><button type="button" data-pc-plus aria-label="Больше правок">+</button></div>
+          </div>
+          <label class="pricecalc-rush">
+            <span class="pc-rush-icon">↯</span><span class="pc-rush-copy"><strong data-pc-text="rushTitle">Срочный заказ</strong><small data-pc-text="rushSub">Приоритетная работа и ускоренный дедлайн</small></span><em>+25%</em>
+            <input type="checkbox" id="pc-rush"><span class="pc-toggle"></span>
+          </label>
+        </section>
+      </div>
 
-<!-- ===== ПОРТФОЛИО / PORTFOLIO ===== -->
-<div class="view" id="v-portfolio">
-<section style="padding-top:60px">
-<div class="head"><h2 data-i18n="h_port"></h2><p data-i18n="p_port"></p></div>
-<div class="filters" id="filters" role="group"></div>
-<div class="grid" id="grid"></div>
-</section>
-<section style="padding-top:0"><div class="glass contact"><h2 data-i18n="h_want"></h2><p data-i18n="p_want"></p><button class="btn" data-go="courses" data-mag data-i18n="cta_courses"></button></div></section>
+      <aside class="pricecalc-summary" aria-live="polite">
+        <p class="pc-summary-label" data-pc-text="estimate">ESTIMATED PROJECT COST</p>
+        <p class="pc-summary-title" data-pc-text="yourEstimate">Твоя оценка</p>
+        <div class="pc-total"><span id="pc-currency">₽</span><output id="pc-total">3 000</output></div>
+        <p class="pc-summary-note" data-pc-text="preliminary">Предварительная стоимость проекта</p>
+        <div class="pc-summary-divider"></div>
+        <div class="pc-breakdown">
+          <div><span data-pc-text="baseLine">База за хронометраж</span><strong id="pc-base">3 000 ₽</strong></div>
+          <div><span data-pc-text="complexityLine">Сложность</span><strong id="pc-complexity">×1.0</strong></div>
+          <div><span data-pc-text="styleLine">Стиль</span><strong id="pc-style">×1.0</strong></div>
+          <div><span data-pc-text="revisionLine">Дополнительные правки</span><strong id="pc-revision-fee">0 ₽</strong></div>
+          <div><span data-pc-text="rushLine">Срочность</span><strong id="pc-rush-fee">0 ₽</strong></div>
+        </div>
+        <div class="pc-summary-divider"></div>
+        <p class="pc-included"><span>✓</span><span data-pc-text="included">2 раунда правок включены</span></p>
+        <a class="pc-contact" href="https://t.me/WHYDESCR1M" target="_blank" rel="noopener noreferrer"><span data-pc-text="contact">Обсудить проект</span><span>↗</span></a>
+        <p class="pc-disclaimer" data-pc-text="disclaimer">Расчёт ориентировочный. Финальная цена зависит от исходников, ТЗ и сроков.</p>
+      </aside>
+    </div>
+  </section>
 </div>
-</main>
-<footer><div class="scene" id="scene" aria-hidden="true"></div></footer>
-
-<div class="modal" id="modal"><div class="glass mbox"><div class="thumb" id="mthumb"><div class="play"><i>▶</i></div></div><div class="mi"><h3 id="mt"></h3><p id="md"></p><div class="row"><a class="btn" id="mlink" href="https://t.me/WHYDESCR1M" target="_blank" rel="noopener"></a><button class="btn ghost" id="mclose" data-i18n="close"></button></div></div></div></div>
-<div class="toast glass" id="toast" role="status"></div>
-<script src="script.js"></script>
-</body>
-</html>
