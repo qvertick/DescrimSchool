@@ -29,7 +29,7 @@
 <div>
 <h1 data-i18n="hero_h1"></h1>
 <p data-i18n="hero_p"></p>
-<div class="row"><a class="btn" href="#courses-list" data-mag data-i18n="cta_pick"></a><button class="btn ghost" type="button" data-pc-open data-i18n="pc_open"></button><a class="btn ghost" href="https://t.me/WHYDESCR1M" target="_blank" rel="noopener" data-mag data-i18n="cta_tg"></a></div>
+<div class="row"><a class="btn" href="#courses-list" data-mag data-i18n="cta_pick"></a><a class="btn ghost" href="https://t.me/WHYDESCR1M" target="_blank" rel="noopener" data-mag data-i18n="cta_tg"></a></div>
 </div>
 <div class="glass tl" aria-hidden="true">
 <div class="tl-top"><span class="rec"><i></i><span data-i18n="rec"></span></span><span id="tc">00:00:00</span></div>
@@ -76,34 +76,6 @@
 </div>
 </main>
 <footer><div class="scene" id="scene" aria-hidden="true"></div></footer>
-
-
-<!-- ===== VIDEO EDITING PRICE CALCULATOR ===== -->
-<div class="pc-modal" id="priceCalcModal" aria-hidden="true">
-  <div class="pc-backdrop" data-pc-close></div>
-  <section class="pc-dialog glass" role="dialog" aria-modal="true" aria-labelledby="pc-title">
-    <button class="pc-x" type="button" data-pc-close aria-label="Close calculator">×</button>
-    <div class="pc-kicker" data-i18n="pc_kicker">VIDEO EDITING · PRICE ESTIMATE</div>
-    <h2 id="pc-title" data-i18n="pc_title">Калькулятор стоимости монтажа</h2>
-    <p class="pc-intro" data-i18n="pc_intro">Настройте параметры заказа — предварительная стоимость пересчитается автоматически.</p>
-    <div class="pc-form">
-      <label class="pc-field"><span data-i18n="pc_complexity">Сложность монтажа</span><select id="pc-complexity"><option value="simple" data-i18n="pc_simple">Базовая</option><option value="medium" selected data-i18n="pc_medium">Средняя</option><option value="complex" data-i18n="pc_complex">Сложная</option></select><small id="pc-complexity-desc" data-i18n="pc_complexity_desc">Динамичный монтаж, графика и дополнительные визуальные элементы.</small></label>
-      <label class="pc-field"><span data-i18n="pc_duration">Длительность готового видео (мин.)</span><input id="pc-duration" type="number" min="0.5" max="240" step="0.5" value="3" inputmode="decimal"></label>
-      <div class="pc-field pc-style-field"><span data-i18n="pc_style">Стиль монтажа</span>
-        <div class="pc-styles" role="group" aria-label="Editing style">
-          <button type="button" class="pc-style" data-style="motion" aria-pressed="true"><b>Motion</b><small data-i18n="pc_motion_desc">Анимация, моушен-графика, кинетическая типографика и визуальные эффекты.</small></button>
-          <button type="button" class="pc-style" data-style="short-form" aria-pressed="false"><b>Short-form</b><small data-i18n="pc_short_desc">Короткие вертикальные ролики для Reels, TikTok и Shorts: быстрый темп, субтитры, акценты.</small></button>
-          <button type="button" class="pc-style" data-style="talkinghead" aria-pressed="false"><b>Talking Head</b><small data-i18n="pc_talking_desc">Видео с человеком в кадре: чистка пауз, склейки, акценты, вставки и титры.</small></button>
-          <button type="button" class="pc-style" data-style="long-form" aria-pressed="false"><b>Long-form</b><small data-i18n="pc_long_desc">Длинные YouTube-видео, интервью или эссе с выстроенным повествованием и ритмом.</small></button>
-        </div>
-      </div>
-      <label class="pc-field"><span data-i18n="pc_revisions">Дополнительные раунды правок</span><select id="pc-revisions"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select><small data-i18n="pc_revision_note">В стоимость включены 2 раунда правок. Каждый дополнительный раунд оплачивается отдельно.</small></label>
-      <label class="pc-rush"><input id="pc-rush" type="checkbox"><span><b data-i18n="pc_rush">Срочный заказ (+25%)</b><small data-i18n="pc_rush_desc">Нужно выполнить заказ быстрее стандартного срока.</small></span></label>
-    </div>
-    <div class="pc-result"><div class="pc-result-label" data-i18n="pc_total_label">Предварительная стоимость</div><div class="pc-total" id="pc-total">—</div><div class="pc-breakdown" id="pc-breakdown"></div><a class="btn pc-contact" id="pc-contact" href="https://t.me/WHYDESCR1M" target="_blank" rel="noopener" data-mag data-i18n="pc_contact">Обсудить заказ в Telegram</a></div>
-    <p class="pc-footnote" data-i18n="pc_note">Расчёт предварительный. Финальная цена зависит от исходников и технического задания.</p>
-  </section>
-</div>
 
 <div class="modal" id="modal"><div class="glass mbox"><div class="thumb" id="mthumb"><div class="play"><i>▶</i></div></div><div class="mi"><h3 id="mt"></h3><p id="md"></p><div class="row"><a class="btn" id="mlink" href="https://t.me/WHYDESCR1M" target="_blank" rel="noopener"></a><button class="btn ghost" id="mclose" data-i18n="close"></button></div></div></div></div>
 <div class="toast glass" id="toast" role="status"></div>

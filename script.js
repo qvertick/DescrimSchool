@@ -39,7 +39,7 @@ const UI={
  ru:{title:'WHYDESCR1M — курсы по After Effects, моушену и 3D',tab_courses:'Курсы',tab_portfolio:'Портфолио',
   hero_h1:'Научу делать моушен и 3D, которые хочется смотреть',
   hero_p:'Курсы по After Effects, моушену и Blender. Домашки проверяю лично, а в пакете «Всё включено» помогу выйти на первого клиента.',
-  cta_pick:'Выбрать курс',pc_open:'Рассчитать стоимость монтажа',pc_kicker:'КАЛЬКУЛЯТОР СТОИМОСТИ МОНТАЖА',pc_title:'Калькулятор стоимости монтажа',pc_intro:'Настройте параметры заказа — предварительная стоимость пересчитается автоматически.',pc_total_label:'Предварительная стоимость',pc_contact:'Обсудить заказ в Telegram',pc_note:'Расчёт предварительный. Финальная цена зависит от исходников и технического задания.',pc_complexity:'Сложность монтажа',pc_simple:'Базовая',pc_medium:'Средняя',pc_complex:'Сложная',pc_duration:'Длительность готового видео (мин.)',pc_style:'Стиль монтажа',pc_motion_desc:'Анимация, моушен-графика, кинетическая типографика и визуальные эффекты.',pc_short_desc:'Короткие вертикальные ролики для Reels, TikTok и Shorts: быстрый темп, субтитры, акценты.',pc_talking_desc:'Видео с человеком в кадре: чистка пауз, склейки, акценты, вставки и титры.',pc_long_desc:'Длинные YouTube-видео, интервью или эссе с выстроенным повествованием и ритмом.',pc_revisions:'Дополнительные раунды правок',pc_revision_note:'В стоимость включены 2 раунда правок. Каждый дополнительный раунд оплачивается отдельно.',pc_rush:'Срочный заказ (+25%)',pc_rush_desc:'Нужно выполнить заказ быстрее стандартного срока.',pc_complexity_desc:'Динамичный монтаж, графика и дополнительные визуальные элементы.',pc_base:'Монтаж',pc_complexity_line:'Сложность',pc_revisions_line:'Дополнительные правки',pc_rush_line:'Срочность +25%',pc_included:'Включено 2 раунда правок',pc_style_names:{motion:'Motion', 'short-form':'Short-form',talkinghead:'Talking Head','long-form':'Long-form'},rec:'Монтаж идёт',
+  cta_pick:'Выбрать курс',cta_tg:'Написать в Telegram',rec:'Монтаж идёт',
   h_courses:'Курсы и цены',p_courses:'Нажмите «Чему научитесь», чтобы увидеть программу курса.',
   h_build:'Соберите свой набор',p_build:'Отмечайте курсы и смотрите итог. Если взять все три, выгоднее пакет «Всё включено».',
   topay:'К оплате',enroll:'Записаться в Telegram',opening:'Открываю Telegram',
@@ -57,7 +57,7 @@ const UI={
  en:{title:'WHYDESCR1M — After Effects, motion design and 3D courses',tab_courses:'Courses',tab_portfolio:'Portfolio',
   hero_h1:"I'll teach you motion and 3D that people want to watch",
   hero_p:'Courses on After Effects, motion design and Blender. I review every assignment personally, and the All-in-one bundle includes help landing your first client.',
-  cta_pick:'Choose a course',pc_open:'Calculate editing price',pc_kicker:'VIDEO EDITING PRICE CALCULATOR',pc_title:'Video editing price calculator',pc_intro:'Adjust the project details to update the estimate automatically.',pc_total_label:'Estimated price',pc_contact:'Discuss the project on Telegram',pc_note:'This is an estimate. The final price depends on the source footage and brief.',pc_complexity:'Editing complexity',pc_simple:'Basic',pc_medium:'Standard',pc_complex:'Advanced',pc_duration:'Final video duration (min)',pc_style:'Editing style',pc_motion_desc:'Animation, motion graphics, kinetic typography and visual effects.',pc_short_desc:'Short vertical videos for Reels, TikTok and Shorts: fast pacing, captions and visual hooks.',pc_talking_desc:'On-camera videos: remove pauses, clean cuts, emphasis, inserts and titles.',pc_long_desc:'Long YouTube videos, interviews or essays with a clear narrative and pacing.',pc_revisions:'Additional revision rounds',pc_revision_note:'2 revision rounds are included. Each additional round is charged separately.',pc_rush:'Rush order (+25%)',pc_rush_desc:'The project needs to be delivered faster than the standard turnaround.',pc_complexity_desc:'Dynamic editing, graphics and additional visual elements.',pc_base:'Editing',pc_complexity_line:'Complexity',pc_revisions_line:'Extra revisions',pc_rush_line:'Rush fee +25%',pc_included:'Includes 2 revision rounds',pc_style_names:{motion:'Motion', 'short-form':'Short-form',talkinghead:'Talking Head','long-form':'Long-form'},rec:'Editing in progress',
+  cta_pick:'Choose a course',cta_tg:'Message on Telegram',rec:'Editing in progress',
   h_courses:'Courses and prices',p_courses:'Tap “What you’ll learn” to see the course program.',
   h_build:'Build your bundle',p_build:'Select courses to see the total. Taking all three? The All-in-one bundle costs less.',
   topay:'Total',enroll:'Enroll on Telegram',opening:'Opening Telegram',
@@ -201,33 +201,6 @@ function calc(instant){
  $('#enroll').href=TG+'?text='+encodeURIComponent(txt);
 }
 
-// Separate video-editing price calculator. Rates below are editable sample prices.
-const pcModal=$('#priceCalcModal');
-let pcReturnFocus=null, pcStyle='motion';
-const PC_RATES={RUB:{motion:3000,'short-form':1500,talkinghead:1200,'long-form':2000},USD:{motion:36,'short-form':18,talkinghead:15,'long-form':24}};
-const PC_COMPLEXITY={simple:1,medium:1.5,complex:2.2};
-const PC_REVISION={RUB:1000,USD:12};
-function pcNum(n){return lang==='ru'?n.toLocaleString('ru-RU'):n.toLocaleString('en-US')}
-function pcMoney(n){return cur==='RUB'?pcNum(Math.round(n))+' ₽':'$'+pcNum(Math.round(n*100)/100)}
-function updatePriceCalc(){
- const duration=Math.max(.5,Math.min(240,Number($('#pc-duration').value)||.5));
- const complexity=$('#pc-complexity').value, extra=Math.max(0,Number($('#pc-revisions').value)||0), rush=$('#pc-rush').checked;
- const base=duration*PC_RATES[cur][pcStyle], complexityExtra=base*(PC_COMPLEXITY[complexity]-1), revisionCost=extra*PC_REVISION[cur], subtotal=base+complexityExtra+revisionCost, rushCost=rush?subtotal*.25:0, total=subtotal+rushCost;
- $('#pc-total').textContent=pcMoney(total);
- const rows=[[UI[lang].pc_base,pcMoney(base)],[UI[lang].pc_complexity_line+' ('+PC_COMPLEXITY[complexity]+'×)',pcMoney(complexityExtra)],[UI[lang].pc_included,''],[UI[lang].pc_revisions_line+' ('+extra+')',pcMoney(revisionCost)]];
- if(rush)rows.push([UI[lang].pc_rush_line,pcMoney(rushCost)]);
- $('#pc-breakdown').innerHTML=rows.map(([a,b])=>`<div class="pc-breakdown-row"><span>${a}</span><strong>${b}</strong></div>`).join('');
- const styleName=UI[lang].pc_style_names[pcStyle],complexityName=$('#pc-complexity option:checked').textContent;
- const msg=lang==='ru'?`Привет! Хочу обсудить монтаж. Стиль: ${styleName}; длительность: ${duration} мин.; сложность: ${complexityName}; дополнительные раунды правок: ${extra}; срочный заказ: ${rush?'да (+25%)':'нет'}. Предварительная стоимость: ${pcMoney(total)}.`:`Hi! I'd like to discuss a video edit. Style: ${styleName}; duration: ${duration} min; complexity: ${complexityName}; extra revision rounds: ${extra}; rush order: ${rush?'yes (+25%)':'no'}. Estimated price: ${pcMoney(total)}.`;
- $('#pc-contact').href=TG+'?text='+encodeURIComponent(msg);
-}
-function renderPriceCalc(){updatePriceCalc()}
-function openPriceCalc(){pcReturnFocus=document.activeElement;renderPriceCalc();pcModal.classList.add('on');pcModal.setAttribute('aria-hidden','false');document.body.classList.add('pc-open');const close=pcModal.querySelector('button[data-pc-close]');if(close)close.focus()}
-function closePriceCalc(){if(!pcModal.classList.contains('on'))return;pcModal.classList.remove('on');pcModal.setAttribute('aria-hidden','true');document.body.classList.remove('pc-open');if(pcReturnFocus&&typeof pcReturnFocus.focus==='function')pcReturnFocus.focus()}
-document.addEventListener('click',e=>{const opener=e.target.closest('[data-pc-open]');if(opener){openPriceCalc();return}if(e.target.closest('[data-pc-close]')){closePriceCalc();return}const style=e.target.closest('[data-style]');if(style){pcStyle=style.dataset.style;$$('.pc-style').forEach(b=>b.setAttribute('aria-pressed',b===style));updatePriceCalc()}});
-['pc-complexity','pc-duration','pc-revisions','pc-rush'].forEach(id=>$('#'+id).addEventListener('input',updatePriceCalc));
-addEventListener('keydown',e=>{if(e.key==='Escape')closePriceCalc()});
-
 // portfolio
 const KINDS=['all','motion','3d','edit'];let kind='all';
 function renderFilters(){$('#filters').innerHTML=KINDS.map(k=>`<button class="chip" data-k="${k}" aria-pressed="${k===kind}">${T('f_'+k)}</button>`).join('')}
@@ -245,7 +218,7 @@ function closeM(){const v=$('#mthumb video');if(v){v.pause();v.remove()}const pl
 $('#mclose').onclick=closeM;$('#modal').onclick=e=>{if(e.target.id==='modal')closeM()};addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
 
 // language + currency switches
-function refresh(first){applyStatic();renderCourses(first);renderOpts();calc(!first);renderFilters();renderGrid();renderPriceCalc();closeM()}
+function refresh(first){applyStatic();renderCourses(first);renderOpts();calc(!first);renderFilters();renderGrid();closeM()}
 let swapT;
 $('#lc').onclick=e=>{const b=e.target.closest('button');if(!b||b.dataset.l===lang)return;
  lang=b.dataset.l;cur=lang==='en'?'USD':'RUB';store.set('lang',lang);
