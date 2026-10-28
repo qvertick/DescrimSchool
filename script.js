@@ -33,7 +33,7 @@ const PORTFOLIO = [ // замените на свои работы: v — пут
  {k:'3d',t:{ru:'Сцена в Blender',en:'Blender scene'},d:{ru:'Окружение и свет, рендер в AE.',en:'Environment and lighting, rendered in AE.'},c:['#7a66d8','#35509f']},
  {k:'motion',t:{ru:'Анимация в AE',en:'Animation in AE'},d:{ru:'Анимация объектов и персонажей в After Effects.',en:'Object and character animation in After Effects.'},c:['#9a86ee','#6a3fb0'],v: 'космос by descrim.mp4'},
 ];
-// Все тексты интерфейса / all UI texts
+ // Все тексты интерфейса / all UI texts
 const UI={
  ru:{title:'WHYDESCR1M — курсы по After Effects, моушену и 3D',tab_courses:'Курсы',tab_portfolio:'Портфолио',
   hero_h1:'Научу делать моушен и 3D, которые хочется смотреть',
